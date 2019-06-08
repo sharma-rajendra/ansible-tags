@@ -1,0 +1,22 @@
+- name: ensure nginx is at the latest version
+  apt: name=nginx state=latest
+  become: yes
+  tags:
+    - nginx
+- name: restart nginx
+  service:
+   name: nginx
+   state: restarted
+  become: yes
+
+- name: install apache2
+  apt: name=apache2 update_cache=yes state=latest
+  become: yes
+  tags: 
+    - apache
+
+- name: restart apache
+  service:
+   name: apache2
+   state: restarted
+  become: yes
